@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Мережа магазинів спортивних товарів</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Мережа магазинів спортивних товарів</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Головна</a></li>
+          <li><a href="#stores">Магазини</a></li>
+          <li><a href="#products">Товари</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="section">
+    <div class="container">
+      <h2>Ласкаво просимо до наших магазинів!</h2>
+      <p>Ми пропонуємо широкий вибір спортивних товарів та одягу для всієї родини.</p>
+    </div>
+  </section>
+
+  <section id="stores" class="section">
+    <div class="container">
+      <h2>Наші магазини</h2>
+      <div class="store" id="storeList">
+        <!-- Магазини будуть виведені тут через JS -->
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="section">
+    <div class="container">
+      <h2>Наші товари</h2>
+      <div class="product" id="productList">
+        <!-- Товари будуть виведені тут через JS -->
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>Про нас</h2>
+      <p>Ми - лідер у галузі спортивних товарів та одягу, надаючи найвищу якість та обслуговування.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Зв'яжіться з нами</h2>
+      <p>Телефон: <span id="phoneNumber"></span></p>
+      <p>Email: <span id="emailAddress"></span></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Мережа магазинів спортивних товарів</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+/* Загальні стилі */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Стилі для заголовка та навігації */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Стилі для секцій та контейнерів */
+.section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Стилі для магазинів та товарів */
+.store,
+.product {
+  margin-bottom: 40px;
+}
+
+.store h3,
+.product h3 {
+  margin-top: 10px;
+}
+
+.store p,
+.product p {
+  color: #666;
+}
+
+.store span,
+.product span {
+  font-weight: bold;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const stores = [
+    { name: 'СпортМайстер', location: 'Київ, вул. Петра Сагайдачного, 12' },
+    // Додайте інші магазини тут
+  ];
+
+  const products = [
+    { name: 'Футбольний м'яч', description: 'Для гри у футбол на траві.', price: '$30' },
+    // Додайте інші товари тут
+  ];
+
+  // Виведення магазинів
+  const storeList = document.getElementById('storeList');
+  stores.forEach(store => {
+    const storeElement = document.createElement('div');
+    storeElement.classList.add('store');
+    storeElement.innerHTML = `
+      <h3>${store.name}</h3>
+      <p>${store.location}</p>
+    `;
+    storeList.appendChild(storeElement);
+  });
+
+  // Виведення товарів
+  const productList = document.getElementById('productList');
+  products.forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.classList.add('product');
+    productElement.innerHTML = `
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <span>${product.price}</span>
+    `;
+    productList.appendChild(productElement);
+  });
+
+  // Встановлення контактної інформації
+  document.getElementById('phoneNumber').innerText = '123-456-7890';
+  document.getElementById('emailAddress').innerText = 'info@sportsstores.com';
+});
+
